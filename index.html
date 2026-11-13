@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zhyk Coin — игровая биржа</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">ZHYK <span>COIN</span></div>
+  <div class="price-box">
+    <span id="price">$1.0000</span>
+    <span id="change" class="up">+0.00%</span>
+  </div>
+</header>
+
+<section class="hero fade-in">
+  <h1>Zhyk Coin</h1>
+  <p>Игровая биржа. Настоящих денег нет — только азарт и графики.</p>
+  <button class="cta" onclick="document.querySelector('.terminal').scrollIntoView({behavior:'smooth'})">
+    Начать торговать
+  </button>
+  <div class="coin c1"></div>
+  <div class="coin c2"></div>
+  <div class="coin c3"></div>
+</section>
+
+<section class="terminal">
+  <div class="panel chart-panel fade-in">
+    <h2>График ZHYK/USD</h2>
+    <canvas id="chart"></canvas>
+  </div>
+
+  <div class="panel trade-panel fade-in">
+    <h2>Торговля</h2>
+    <div class="tabs">
+      <button id="tab-buy" class="tab active" onclick="setTab('buy')">Купить</button>
+      <button id="tab-sell" class="tab" onclick="setTab('sell')">Продать</button>
+    </div>
+    <label>Количество ZHYK
+      <input type="number" id="amount" value="10" min="0" step="0.01">
+    </label>
+    <div class="estimate" id="estimate">≈ $10.00</div>
+    <button id="action-btn" class="action buy" onclick="trade()">Купить ZHYK</button>
+    <div class="wallet">
+      <div>💵 Баланс: <b id="usd">$1000.00</b></div>
+      <div>🪙 ZHYK: <b id="coins">0.00</b></div>
+      <div>📈 PnL: <b id="pnl" class="up">$0.00</b></div>
+    </div>
+  </div>
+</section>
+
+<section class="panel history-panel fade-in">
+  <h2>История сделок</h2>
+  <ul id="tx-list"><li class="empty">Пока пусто — сделай первую сделку!</li></ul>
+</section>
+
+<footer>Сделано для игры. Zhyk Coin — не настоящая валюта 😉</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
