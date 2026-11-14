@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zhyk Coin — игровая экосистема</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="logo">ZHYK <span>COIN</span></div>
+  <div class="price-box">
+    <span id="price">$1.0000</span>
+    <span id="change" class="up">+0.00%</span>
+  </div>
+</header>
+
+<main class="pages">
+
+  <!-- ГЛАВНАЯ (корона): тапалка -->
+  <section id="page-main" class="page active">
+    <div class="panel tap-panel">
+      <h2>ZHYK COIN</h2>
+      <div id="tap-coin" class="tap-coin">
+        <div class="emblem">
+          <span class="emblem-z">Z</span>
+          <span class="emblem-hyk">hyk</span>
+        </div>
+      </div>
+      <p class="tap-hint">Тапай эмблему — получай $1 за тап</p>
+      <div id="boost-status" class="boost-status"></div>
+      <div class="tap-total">Заработано тапом: <b id="tap-earned">$0.00</b></div>
+      <div class="wallet">
+        <div>💵 Баланс: <b id="usd-main">$0.00</b></div>
+        <div>🪙 ZHYK: <b id="coins-main">0.00</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ЭМБЛЕМА: биржа и трейдинг -->
+  <section id="page-trade" class="page">
+    <div class="panel chart-panel">
+      <h2>График ZHYK/USD</h2>
+      <canvas id="chart"></canvas>
+    </div>
+    <div class="panel trade-panel">
+      <h2>Торговля</h2>
+      <div class="tabs">
+        <button id="tab-buy" class="tab active" onclick="setTradeTab('buy')">Купить</button>
+        <button id="tab-sell" class="tab" onclick="setTradeTab('sell')">Продать</button>
+      </div>
+      <label>Количество ZHYK
+        <input type="number" id="amount" value="10" min="0" step="0.01">
+      </label>
+      <div class="estimate" id="estimate">≈ $10.00</div>
+      <button id="action-btn" class="action buy" onclick="trade()">Купить ZHYK</button>
+      <div class="wallet">
+        <div>💵 Баланс: <b id="usd">$0.00</b></div>
+        <div>🪙 ZHYK: <b id="coins">0.00</b></div>
+        <div>📈 PnL: <b id="pnl" class="up">$0.00</b></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ДОМИК: город -->
+  <section id="page-city" class="page">
+    <div class="panel city-panel">
+      <h2>Город Zhyk</h2>
+      <p class="city-hint">Строй здания — они приносят доллары каждую секунду, даже когда тапать лень.</p>
+      <div class="city-income">Доход города: <b id="city-income">$0.00/сек</b></div>
+      <div id="city-list"></div>
+    </div>
+  </section>
+
+  <!-- Z: букмекерская -->
+  <section id="page-book" class="page">
+    <div class="panel book-panel">
+      <h2>ZHYKWIN — букмекерская контора</h2>
+      <p class="city-hint">Игровая ставка на виртуальный матч. Деньги тут ненастоящие 😉</p>
+      <div class="match-teams" id="match-teams"></div>
+      <label>Ставка, $
+        <input type="number" id="bet-amount" value="10" min="1" step="1">
+      </label>
+      <div class="bet-buttons">
+        <button id="bet1" class="bet-btn"></button>
+        <button id="betX" class="bet-btn draw"></button>
+        <button id="bet2" class="bet-btn"></button>
+      </div>
+      <div id="bet-result" class="bet-result">Сделай ставку — и следи за матчем!</div>
+      <div class="book-balance">💵 Баланс: <b id="usd-book">$0.00</b></div>
+    </div>
+  </section>
+
+  <!-- S: магазин -->
+  <section id="page-shop" class="page">
+    <div class="panel shop-panel">
+      <h2>Магазин Zhyk</h2>
+      <p class="city-hint">Снеки усиливают тапалку: чем вкуснее — тем сильнее буст.</p>
+      <div id="boost-status-shop" class="boost-status"></div>
+      <div id="shop-list"></div>
+    </div>
+  </section>
+
+</main>
+
+<!-- Навигация из 5 кнопок -->
+<nav class="bottom-nav">
+  <button class="nav-btn" data-page="page-book">
+    <span class="nav-icon nav-letter">Z</span><small>ZHYKWIN</small>
+  </button>
+  <button class="nav-btn" data-page="page-trade">
+    <span class="nav-icon nav-emblem">Z</span><small>БИРЖА</small>
+  </button>
+  <button class="nav-btn active" data-page="page-main">
+    <span class="nav-icon nav-crown">👑</span><small>ГЛАВНАЯ</small>
+  </button>
+  <button class="nav-btn" data-page="page-city">
+    <span class="nav-icon nav-home">🏠</span><small>ГОРОД</small>
+  </button>
+  <button class="nav-btn" data-page="page-shop">
+    <span class="nav-icon nav-letter s">S</span><small>МАГАЗИН</small>
+  </button>
+</nav>
+
+<footer class="footer">Сделано для игры. Zhyk Coin — не настоящая валюта 😉</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
